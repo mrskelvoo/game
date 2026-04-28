@@ -7,33 +7,88 @@
     <title>game</title>
     <style>
         body{
-            background-color: rgb(34, 34, 34);
+            margin: 0;
+            padding: 0;
+            background-color: yellowgreen;
         }
-        .screen{
-            position: fixed;
-            width: 80vw;
-            height: 80vh;
-            background-color: black;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 20px;
-            box-shadow: 1px 1px 40px rgba(255, 255, 255, 0.404);
-        }
-        input{
+        .enemi{
+            margin: 0;
+            padding: 0;
             position: absolute;
+            height: 75px;
+            width: 75px;
+            background: rgb(0, 89, 255);
+            border: 3px solid blue;
+            border-radius: 999px;
+            cursor: pointer;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100px;
-            height: 50px;
-            font-size: 15px;
-            border-radius: 20px;
-            
+        }
+        #yeuxl{
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            height: 8px;
+            width: 8px;
+            background: rgb(0, 0, 0);
+            border: 5px solid white;
+        }
+        #yeuxll{
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            height: 8px;
+            width: 8px;
+            background: rgb(0, 0, 0);
+            border: 5px solid white;
+        }
+        #bh{
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            top: 50px;
+            height: 8px;
+            width: 40px;
+            background: rgb(0, 13, 129);
+        }
+        h1{
+            position: fixed;
+            top: 20px;
+            right: 80px;
+            font-family: fantasy;
         }
     </style>
 </head>
 <body>
-    <div class="screen"><input type="number"></div>
+    <div class="enemi">
+        <div id="yeuxl"></div>
+        <div id="yeuxll"></div>
+        <div id="bh"></div>
+    </div>
+    <h1>Score:</h1>
+    <h2>je suis Mehdi!!!!!!!!!!!!!!</h2>
+    <script>
+        const enemi = document.querySelector(".enemi")
+        let score = document.querySelector("h1")
+        let compteur = 0;
+        function nombre_aleatoire(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        enemi.addEventListener("click", () =>{
+            enemi.style.left = nombre_aleatoire(0, 90) + "vw";
+            enemi.style.top = nombre_aleatoire(0, 80) + "vh";
+            compteur++;
+            score.textContent = "Score: " + compteur;
+            if (compteur === 50) {
+                alert("score 50 ateint!")
+            }
+            if (compteur === 106) {
+                alert("... wtf")
+            }
+            
+        })
+
+    </script>
 </body>
 </html>
